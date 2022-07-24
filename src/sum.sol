@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-pragma solidity ^0.8.15;
+pragma solidity >=0.5.0;
 
 import {DSNote} from "ds-note/note.sol";
 
@@ -54,7 +54,7 @@ contract Sum is DSNote {
     uint256 public live;  // Active Flag
 
     // --- Init ---
-    constructor() {
+    constructor() public {
         wards[msg.sender] = 1;
         One = 1;
         live = 1;
