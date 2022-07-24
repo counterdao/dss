@@ -39,9 +39,9 @@ sense, the rules in the `Sum` can be viewed as the constitution of `dss`.
 Within the `Sum` an `Inc` represents a stored ICV (Integer Counter Value). The
 attributes of an `Inc` are:
 - `net`: The counter value.
-- `tab`: The sum of all counter increments.
-- `tax`: The sum of all counter decrements.
-- `num`: Total number of counter operations, i.e. sum of increments, decrements, and resets.
+- `tab`: The sum of all counter increment values.
+- `tax`: The sum of all counter decrement values.
+- `num`: Total number of counter operations, i.e. count of all `frob` and `zero` calls to this `Inc`.
 - `hop`: The counter's increment unit.
 
 Functions:
@@ -52,6 +52,13 @@ Functions:
 - `wish`: Check whether an address is allowed to modify another address's Counter.
   - `hope`: enable `wish` for a pair of addresses.
   - `nope`: disable `wish` for a pair of addresses.
+
+## Use — Counter creation module
+
+The `Use` creates new Counters.
+
+Functions:
+- `use`: Initializes a new `Inc` associated with the caller's address.
 
 ## Hitter — Increment module
 
