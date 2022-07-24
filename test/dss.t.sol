@@ -80,7 +80,7 @@ contract Examples is DSSTest {
         // basic counter.
 
         // Deploy a DSSProxy with Bob as admin
-        address proxy = dss.build("", bob);
+        address proxy = dss.build("create2 salt", bob);
 
         // Our current address is authorized
         // to call the proxy and interact with
@@ -120,7 +120,7 @@ contract Examples is DSSTest {
         // or reset.
 
         // Deploy a DSSProxy with Bob as admin
-        address proxy = dss.build("", bob);
+        address proxy = dss.build("create2 salt", bob);
 
         // Our current address is authorized
         // to call the proxy and interact with
@@ -166,7 +166,7 @@ contract Examples is DSSTest {
         // callers to interact with DSS.
 
         // Deploy a DSSProxy with Bob as admin
-        address proxy = dss.build("", bob);
+        address proxy = dss.build("create2 salt", bob);
 
         // Our current address is authorized
         // to call the proxy and interact with
