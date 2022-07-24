@@ -1,4 +1,6 @@
 # Decentralized Summation System
+![Build Status](https://github.com/counterdao/dss/actions/workflows/.github/workflows/ci.yml/badge.svg?branch=main)
+
 
 This repository contains the core smart contract code for the Decentralized
 Summation System (`dss`). This is a high level description of the system, assuming
