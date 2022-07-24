@@ -3,7 +3,7 @@
 This repository contains the core smart contract code for the Decentralized
 Summation System (`dss`). This is a high level description of the system, assuming
 familiarity with the basic counting mechanics as described in the
-[whitepaper](https://archive.org/details/arithmeticespri00peangoog/mode/2up).
+[whitepaper](https://archive.org/details/arithmeticespri00peangoog/page/n6/mode/2up).
 
 ## System Diagram
 
