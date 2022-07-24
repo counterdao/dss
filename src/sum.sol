@@ -41,17 +41,17 @@ contract Sum is DSNote {
 
     // --- Data ---
     struct Inc {
-        uint256 net;  // Net counter value
-        uint256 tab;  // Sum of increments
-        uint256 tax;  // Sum of decrements
-        uint256 num;  // Total counter operations
-        uint256 hop;  // Counter increment unit
+        uint net;  // Net counter value
+        uint tab;  // Sum of increments
+        uint tax;  // Sum of decrements
+        uint num;  // Total counter operations
+        uint hop;  // Counter increment unit
     }
 
     mapping (address => Inc) public incs;
 
-    uint256 public One;   // Global increment parameter
-    uint256 public live;  // Active Flag
+    uint public One;   // Global increment parameter
+    uint public live;  // Active Flag
 
     // --- Init ---
     constructor() public {
