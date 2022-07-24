@@ -22,7 +22,7 @@ import "forge-std/Test.sol";
 import {Sum} from "../src/sum.sol";
 import {Spy} from "../src/spy.sol";
 
-contract TestNil is Test {
+contract TestSpy is Test {
     Sum internal sum;
     Spy internal spy;
 
