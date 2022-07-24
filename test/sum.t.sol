@@ -236,6 +236,38 @@ contract TestSum is Test {
         sum.deny(me);
     }
 
+    function test_free() public {
+        sum.boot(me);
+
+        sum.cage();
+
+        vm.expectRevert("Sum/not-live");
+        sum.file("One", 1);
+
+        vm.expectRevert("Sum/not-live");
+        sum.boot(me);
+
+        vm.expectRevert("Sum/not-live");
+        sum.zero(me);
+
+        vm.expectRevert("Sum/not-live");
+        sum.frob(me, 1);
+
+        vm.expectRevert("Sum/not-live");
+        sum.rely(me);
+
+        vm.expectRevert("Sum/not-live");
+        sum.deny(me);
+
+        sum.free();
+
+        sum.file("One", 1);
+        sum.zero(me);
+        sum.frob(me, 1);
+        sum.rely(me);
+        sum.deny(me);
+    }
+
     function test_rely_deny() public {
         address guy = address(1);
 

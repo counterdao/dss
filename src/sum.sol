@@ -80,6 +80,9 @@ contract Sum is DSNote {
     function cage() external note auth {
         live = 0;
     }
+    function free() external note auth {
+        live = 1;
+    }
 
     function either(bool x, bool y) internal pure returns (bool z) {
         assembly{ z := or(x, y)}
