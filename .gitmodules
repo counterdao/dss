@@ -13,3 +13,6 @@
 [submodule "lib/ds-pause"]
 	path = lib/ds-pause
 	url = https://github.com/makerdao/ds-pause
+[submodule "lib/ds-chief"]
+	path = lib/ds-chief
+	url = https://github.com/makerdao/ds-chief
