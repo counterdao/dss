@@ -56,7 +56,7 @@ contract Sum is DSNote {
     // --- Init ---
     constructor() {
         wards[msg.sender] = 1;
-        One = 1;
+        One = 2;
         live = 1;
     }
 
