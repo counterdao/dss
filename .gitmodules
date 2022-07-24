@@ -16,3 +16,6 @@
 [submodule "lib/ds-chief"]
 	path = lib/ds-chief
 	url = https://github.com/makerdao/ds-chief
+[submodule "lib/ds-test"]
+	path = lib/ds-test
+	url = https://github.com/dapphub/ds-test
