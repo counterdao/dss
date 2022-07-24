@@ -27,7 +27,7 @@ familiarity with the basic counting mechanics as described in the
 
 ## Usage
 
-See the test cases in [`dss.t.sol`](https://github.com/counterdao/dss/blob/aa7809965a314a5c8fdf7e6b5d39a92bf0901c3f/test/dss.t.sol#L76) for annotated examples that demonstrate how to interact with `dss` from your own contracts.
+See the test cases in [`dss.t.sol`](https://github.com/counterdao/dss/blob/30569b93c86f2ca70dcd45f3cb374829ac7abbfc/test/dss.t.sol#L76) for annotated examples that demonstrate how to interact with `dss` from your own contracts.
 
 ## Sum — Counter Engine
 
