@@ -21,10 +21,10 @@ import {DSTest} from "ds-test/test.sol";
 
 import {Sum} from "../../src/sum.sol";
 import {CTR} from "../../src/gov/ctr.sol";
+import {DssSpell} from "../../src/gov/spell.sol";
 import {DSToken} from "ds-token/token.sol";
 import {DSChief, DSChiefFab} from "ds-chief/chief.sol";
 import {DSPause, DSPauseProxy} from "ds-pause/pause.sol";
-import {DSSpell, DSSpellBook} from "ds-spell/spell.sol";
 
 interface VmLike {
     function prank(address) external;
@@ -34,7 +34,22 @@ interface VmLike {
     function expectRevert(bytes4) external;
     function expectRevert() external;
     function label(address, string calldata) external;
+    function warp(uint256) external;
 }
+
+interface SumLike {
+    function file(bytes32,uint256) external;
+}
+
+contract SetOneToTwo {
+    string constant public description = "Set One to 2";
+    address constant public sum = address(0xCe71065D4017F316EC606Fe4422e11eB2c47c246);
+
+    function execute() external {
+        SumLike(sum).file("One", 2);
+    }
+}
+
 
 contract TestGov is DSTest {
 
@@ -48,8 +63,7 @@ contract TestGov is DSTest {
     DSChief internal chief;
     DSPause internal pause;
     DSPauseProxy internal pauseProxy;
-    DSSpellBook internal spellBook;
-    DSSpell internal spell;
+    DssSpell internal spell;
 
     address me = address(this);
 
@@ -73,22 +87,8 @@ contract TestGov is DSTest {
         pause = new DSPause(172800, address(0), address(chief));
         pauseProxy = pause.proxy();
 
-        spellBook = new DSSpellBook();
-
-        // Assemble the plot
-        address      usr = address(sum);
-        bytes32      tag;  assembly { tag := extcodehash(usr) }
-        bytes memory fax = abi.encodeWithSignature("file(bytes32,uint)", "One", 2);
-        uint256      eta = now + pause.delay();
-
-        bytes memory plot = abi.encodeWithSignature(
-            "plot(address,bytes32,bytes memory,uint)",
-            usr,
-            tag,
-            fax,
-            eta
-        );
-        spell = spellBook.make(address(pause), 0, plot);
+        SetOneToTwo action = new SetOneToTwo();
+        spell = new DssSpell(address(pause), address(action));
     }
 
     function test_governance_deployment() public {
@@ -164,11 +164,22 @@ contract TestGov is DSTest {
         address[] memory dummy = new address[](1);
         dummy[0] = address(0);
 
-        address[] memory slate = new address[](1);
-        slate[0] = address(spell);
-
         // Hat is address(0)
         assertEq(chief.hat(), address(0));
+
+        // Alice votes for dummy slate
+        vm.prank(alice);
+        bytes32 dummyId = chief.vote(dummy);
+
+        // Chief meets launch limit
+        assertGt(chief.approvals(address(0)), 80_000 * 10 ** 18);
+        assertTrue(!chief.live());
+
+        // Launch the chief
+        chief.launch();
+
+        address[] memory slate = new address[](1);
+        slate[0] = address(spell);
 
         // Alice votes for spell slate
         vm.prank(alice);
@@ -180,7 +191,7 @@ contract TestGov is DSTest {
 
         // Bob votes for dummy slate
         vm.prank(bob);
-        chief.vote(dummy);
+        chief.vote(dummyId);
 
         // Lift the hat
         chief.lift(address(0));
@@ -194,8 +205,21 @@ contract TestGov is DSTest {
         chief.lift(address(spell));
         assertEq(chief.hat(), address(spell));
 
-        // Cast the spell
-        //spell.cast();
+        // Schedule the spell
+        spell.schedule();
+
+        // Warp to plot eta
+        vm.warp(spell.eta());
+
+        // Execute the spell
+        spell.cast();
+
+        // One is now 2
+        assertEq(sum.One(), 2);
+
+        // Spell cannot execute twice
+        vm.expectRevert("spell-already-cast");
+        spell.cast();
     }
 
 }

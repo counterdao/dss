@@ -39,6 +39,11 @@ contract Sum is DSNote {
         return either(bit == usr, can[bit][usr] == 1);
     }
 
+    event Caller(address caller);
+    function caller() external {
+        emit Caller(msg.sender);
+    }
+
     // --- Data ---
     struct Inc {
         uint net;  // Net counter value
