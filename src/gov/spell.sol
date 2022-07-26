@@ -16,7 +16,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-pragma solidity 0.5.16;
+pragma solidity >=0.5.16;
 
 interface PauseLike {
     function plot(address,bytes32,bytes calldata,uint256) external;
@@ -45,7 +45,7 @@ contract DssSpell {
         bytes32 _tag;
         assembly { _tag := extcodehash(_action) }
         tag = _tag;
-        expiration = now + 30 days;
+        expiration = block.timestamp + 30 days;
     }
 
     function description() public view returns (string memory) {
@@ -53,9 +53,9 @@ contract DssSpell {
     }
 
     function schedule() public {
-        require(now <= expiration, "This contract has expired");
+        require(block.timestamp <= expiration, "This contract has expired");
         require(eta == 0, "This spell has already been scheduled");
-        eta = now + pause.delay();
+        eta = block.timestamp + pause.delay();
         pause.plot(action, tag, sig, eta);
     }
 

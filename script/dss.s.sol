@@ -26,9 +26,9 @@ import {Dipper} from "../src/dip.sol";
 import {Nil} from "../src/nil.sol";
 import {Spy} from "../src/spy.sol";
 
-contract Deploy is Script {
+contract DeployDSS is Script {
 
-    function deployCore() public {
+    function deployDSS() public {
         Sum sum = new Sum();
         Use use = new Use(address(sum));
         Nil nil = new Nil(address(sum));
@@ -50,7 +50,7 @@ contract Deploy is Script {
     function run() external {
         vm.startBroadcast();
 
-        deployCore();
+        deployDSS();
 
         vm.stopBroadcast();
     }
