@@ -2,3 +2,5 @@ out/
 cache/
 .vscode/
 broadcast/
+
+.env

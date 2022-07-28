@@ -18,7 +18,8 @@ pragma solidity 0.5.16;
 
 import {CTR} from "../src/gov/ctr.sol";
 import {DssSpell} from "../src/gov/spell.sol";
-import {DSChief, DSChiefFab} from "ds-chief/chief.sol";
+import {DSToken} from "ds-token/token.sol";
+import {DSChief} from "ds-chief/chief.sol";
 import {DSPause, DSPauseProxy} from "ds-pause/pause.sol";
 
 interface VmLike {
@@ -44,16 +45,16 @@ contract DeployGov {
     function deployGov(address sum) public {
         address            me = address(this);
         CTR               ctr = new CTR();
-        DSChiefFab        fab = new DSChiefFab();
-        DSChief         chief = fab.newChief(ctr, MAX_YAYS);
+        DSToken           iou = new DSToken('IOU');
+        DSChief         chief = new DSChief(ctr, iou, MAX_YAYS);
         DSPause         pause = new DSPause(DELAY, address(0), address(chief));
         DSPauseProxy    proxy = pause.proxy();
 
+        ctr.setOwner(address(0));
+        iou.setOwner(address(chief));
         SumLike(sum).rely(address(proxy));
         SumLike(sum).deny(me);
     }
-
-    event Sum(address sum);
 
     function run() external {
         vm.startBroadcast();
