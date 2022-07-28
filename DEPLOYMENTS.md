@@ -8,6 +8,7 @@
 - [`Hitter`](https://goerli.etherscan.io/address/0xd72fc35e12c24e1c8669e6bd5f2aaeed6e214454): `0xD72Fc35e12c24e1c8669e6bD5F2aAEEd6e214454`
 - [`Dipper`](https://goerli.etherscan.io/address/0x890a7c660e4b604614b511fd35e287a4a599422a): `0x890a7C660e4B604614B511FD35E287a4A599422a`
 - [`Nil`](https://goerli.etherscan.io/address/0x900b4220d07b22f04c6a650e2b6a3e3b100d1aab): `0x900b4220d07B22F04C6a650e2B6A3E3B100d1aAb`
+- [`DSS`](https://goerli.etherscan.io/address/0x9afb089dc710507776c00eb0877133711196d91f): `0x9AfB089Dc710507776c00eB0877133711196d91F`
 - [`CTR`](https://goerli.etherscan.io/address/0x14cb008c0870336972d948e8fafe796586d8a1de): `0x14cb008c0870336972D948E8fAFE796586d8a1De`
 - [`IOU`](https://goerli.etherscan.io/address/0x4c07ec9ffa3ac829be7fdc0f0995e4ed4e930c9f): `0x4c07eC9FFA3AC829Be7fdC0f0995e4eD4e930C9f`
 - [`DSChief`](https://goerli.etherscan.io/address/0x8cdf3918a19a4ce08b0a49bf370f2fa8169f8d15):  `0x8cDf3918a19a4CE08b0a49bF370f2fa8169F8d15`
