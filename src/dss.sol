@@ -30,6 +30,7 @@ interface DSSLike {
     function hope(address) external;
     function nope(address) external;
     function bless() external;
+    function build(bytes32 wit, address god) external returns (address proxy);
 }
 
 interface SumLike {
