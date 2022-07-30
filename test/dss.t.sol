@@ -481,4 +481,11 @@ contract TestDSS is DSSTest {
         // Bob is now owner
         assertEq(proxy.owner(), bob);
     }
+
+    function test_scry() public {
+        vm.prank(alice);
+        address proxyAddr = dss.build("salt", bob);
+
+        assertEq(dss.scry(alice, "salt", bob), proxyAddr);
+    }
 }

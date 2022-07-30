@@ -30,7 +30,8 @@ interface DSSLike {
     function hope(address) external;
     function nope(address) external;
     function bless() external;
-    function build(bytes32 wit, address god) external returns (address proxy);
+    function build(bytes32 wit, address god) external returns (address);
+    function scry(address guy, bytes32 wit, address god) external view returns (address);
 }
 
 interface SumLike {
@@ -122,5 +123,24 @@ contract DSS {
 
     function build(bytes32 wit, address god) external returns (address proxy) {
         proxy = address(new DSSProxy{ salt: wit }(address(this), msg.sender, god));
+    }
+
+    function scry(address guy, bytes32 wit, address god) external view returns (address) {
+        address me = address(this);
+        return address(uint160(uint256(keccak256(
+            abi.encodePacked(
+                bytes1(0xff),
+                me,
+                wit,
+                keccak256(
+                    abi.encodePacked(
+                        type(DSSProxy).creationCode,
+                        abi.encode(me),
+                        abi.encode(guy),
+                        abi.encode(god)
+                    )
+                )
+            )
+        ))));
     }
 }
