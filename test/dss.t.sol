@@ -298,6 +298,10 @@ contract TestDSS is DSSTest {
         dss.nil();
     }
 
+    function test_access_sum() public {
+        assertEq(dss.sum(), address(sum));
+    }
+
     function test_dss_proxy() public {
         // Alice is proxy usr, Bob is proxy god
         vm.startPrank(alice);

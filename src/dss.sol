@@ -22,6 +22,7 @@ pragma solidity ^0.8.15;
 import {DSSProxy} from "./proxy/proxy.sol";
 
 interface DSSLike {
+    function sum() external view returns(address);
     function use() external;
     function see() external view returns (uint256);
     function hit() external;
@@ -61,12 +62,12 @@ interface NilLike {
 
 contract DSS {
     // --- Data ---
-    SumLike    immutable public _sum;
-    UseLike    immutable public _use;
-    SpyLike    immutable public _spy;
-    HitterLike immutable public _hitter;
-    DipperLike immutable public _dipper;
-    NilLike    immutable public _nil;
+    address immutable public sum;
+    address immutable public _use;
+    address immutable public _spy;
+    address immutable public _hitter;
+    address immutable public _dipper;
+    address immutable public _nil;
 
     // --- Init ---
     constructor(
@@ -77,48 +78,48 @@ contract DSS {
         address dipper_,
         address nil_)
     {
-        _sum    = SumLike(sum_);        // Core ICV engine
-        _use    = UseLike(use_);        // Creation module
-        _spy    = SpyLike(spy_);        // Read module
-        _hitter = HitterLike(hitter_);  // Increment module
-        _dipper = DipperLike(dipper_);  // Decrement module
-        _nil    = NilLike(nil_);        // Reset module
+        sum     = sum_;        // Core ICV engine
+        _use    = use_;     // Creation module
+        _spy    = spy_;     // Read module
+        _hitter = hitter_;  // Increment module
+        _dipper = dipper_;  // Decrement module
+        _nil    = nil_;     // Reset module
     }
 
     // --- DSS Operations ---
     function use() external {
-        _use.use();
+        UseLike(_use).use();
     }
 
     function see() external view returns (uint256) {
-        return _spy.see();
+        return SpyLike(_spy).see();
     }
 
     function hit() external {
-        _hitter.hit();
+        HitterLike(_hitter).hit();
     }
 
     function dip() external {
-        _dipper.dip();
+        DipperLike(_dipper).dip();
     }
 
     function nil() external {
-        _nil.nil();
+        NilLike(_nil).nil();
     }
 
     function hope(address usr) external {
-        _sum.hope(usr);
+        SumLike(sum).hope(usr);
     }
 
     function nope(address usr) external {
-        _sum.nope(usr);
+        SumLike(sum).nope(usr);
     }
 
     function bless() external {
-        _sum.hope(address(_use));
-        _sum.hope(address(_hitter));
-        _sum.hope(address(_dipper));
-        _sum.hope(address(_nil));
+        SumLike(sum).hope(_use);
+        SumLike(sum).hope(_hitter);
+        SumLike(sum).hope(_dipper);
+        SumLike(sum).hope(_nil);
     }
 
     function build(bytes32 wit, address god) external returns (address proxy) {
