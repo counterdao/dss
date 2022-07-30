@@ -100,6 +100,10 @@ Functions:
   `msg.sender` to interact with the proxy.
   - `wit`: A `bytes32` salt for the `create2` constructor.
   - `god`: Proxy owner address, authorized to update the implementation and manage `wards`.
+- `scry`: Return the deterministic address of a `DSSProxy`.
+  - `guy`: `DSSProxy` deployer address.
+  - `wit`: `bytes32` salt.
+  - `god`: Proxy owner address.
 - `bless`: Authorize the core `dss` modules (`Use`, `Hitter`, `Dipper`, and `Nil`).
 - `use`: Create a new Counter.
 - `see`: Read a Counter value.
