@@ -78,7 +78,7 @@ contract DSS {
         address dipper_,
         address nil_)
     {
-        sum     = sum_;        // Core ICV engine
+        sum     = sum_;     // Core ICV engine
         _use    = use_;     // Creation module
         _spy    = spy_;     // Read module
         _hitter = hitter_;  // Increment module
