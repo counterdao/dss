@@ -36,6 +36,7 @@ interface SumLike {
 contract DeployGov {
 
     // Can't use forge-std Script here
+    bool public IS_SCRIPT = true;
     address private constant VM_ADDRESS = address(bytes20(uint160(uint256(keccak256('hevm cheat code')))));
     VmLike public constant vm = VmLike(VM_ADDRESS);
 
@@ -50,10 +51,17 @@ contract DeployGov {
         DSPause         pause = new DSPause(DELAY, address(0), address(chief));
         DSPauseProxy    proxy = pause.proxy();
 
+        // Renounce CTR ownership
         ctr.setOwner(address(0));
+
+        // Transfer IOU ownership to Chief
         iou.setOwner(address(chief));
+
+        // Grant Sum access to Pause proxy
         SumLike(sum).rely(address(proxy));
-        SumLike(sum).deny(me);
+
+        // Revoke Sum access
+        SumLike(sum).deny(msg.sender);
     }
 
     function run() external {
