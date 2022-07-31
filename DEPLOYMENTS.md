@@ -1,5 +1,20 @@
 # DSS Deployments
 
+## Mainnet
+
+- [`Sum`](https://etherscan.io/address/0xdbd46f0f897a4005d9300d8008309175a4cb0b67): `0xDbd46F0F897A4005D9300D8008309175A4Cb0B67`
+- [`Use`](https://etherscan.io/address/0x574955166fa26323750549beac8f420022ee4423): `0x574955166FA26323750549bEaC8F420022ee4423`
+- [`Spy`](https://etherscan.io/address/0xb9ea377e470d32017613642fe8f4f562555624e1): `0xb9Ea377e470D32017613642FE8f4F562555624E1`
+- [`Hitter`](https://etherscan.io/address/0x73152907012416388ec1acd06203f2ca2523c09b): `0x73152907012416388EC1aCd06203f2Ca2523c09B`
+- [`Dipper`](https://etherscan.io/address/0x282055fdaa364ff5ec845a8187255489dd749bda): `0x282055FDAA364fF5Ec845a8187255489dD749bDA`
+- [`Nil`](https://etherscan.io/address/0x199a8d49a0a3febe484fb516e9aeb260236edeff): `0x199a8D49a0A3FEbE484fb516E9aEB260236eDEff`
+- [`DSS`](https://etherscan.io/address/0xce78254bcd05040953d28fcb640c465f086bec9b): `0xcE78254bCD05040953d28FcB640c465f086BEC9b`
+- [`CTR`](https://etherscan.io/address/0xa86c903cabab19f193a6252dd99bdfd747cd40ee): `0xA86c903CabAb19f193A6252DD99bdFD747cD40Ee`
+- [`IOU`](https://etherscan.io/address/0x69e1e1ac98898d9c871daa47fa6e2743a9d04ef0): `0x69E1e1ac98898D9c871daa47fa6e2743a9d04Ef0`
+- [`DSChief`](https://etherscan.io/address/0x5a07956317d17de6d7ae36fda0798c3b2219e37f):  `0x5A07956317d17de6D7aE36fda0798C3b2219E37f`
+- [`DSPause`](https://etherscan.io/address/0x0f496e9c6f982335b9be465e8c4fcbeba9500de1): `0x095d2edB6B90B49cD540FCB9C07241aac650813e`
+- [`DSPauseProxy`](https://etherscan.io/address/0x380f6e6cab0f45285151bf92e99dc8230ba6de78): `0x380F6E6cab0F45285151bF92e99dC8230ba6De78`
+
 ## Goerli
 
 - [`Sum`](https://goerli.etherscan.io/address/0xf8917d8f6026562e82541bc0b2b92e252ae826e6): `0xF8917d8f6026562e82541BC0b2B92E252aE826E6`
