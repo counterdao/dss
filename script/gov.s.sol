@@ -60,7 +60,7 @@ contract DeployGov {
         // Grant Sum access to Pause proxy
         SumLike(sum).rely(address(proxy));
 
-        // Revoke Sum access
+        // Revoke Sum access from deployer
         SumLike(sum).deny(msg.sender);
     }
 
